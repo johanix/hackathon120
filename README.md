@@ -141,7 +141,7 @@ instead.
      update the parent zone.
 
 
-### Demo stuff}
+### Demo stuff
 
 1. Design a nice demo to show off all the working functionality.
 
