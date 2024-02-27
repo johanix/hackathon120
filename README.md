@@ -62,7 +62,7 @@ language, then that's also great.
 
 ## TASKS
 
-### Child-side stuff}
+### Child-side stuff
 
 The child primary must notice when contents in the child zone that
 affect the delegation changes. Then it needs to look up supported
