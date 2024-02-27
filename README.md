@@ -1,5 +1,6 @@
 # Generalized Notifications @ Hackathon 119
-Implementation of rapid fully automated synchronization of DNS delegation data
+
+Implementation of rapid fully automated synchronization of DNS delegation data.
 
 ## PROJECT
 
@@ -7,10 +8,8 @@ Add new functionality to a working nameserver implementation to
 provide fully automatic management of delegation information
 between child and parent zones according to the two drafts
 
-\begin{itemize}
-\item \prt{draft-ietf-dnsop-generalized-notify-01}
-\item \prt{draft-johani-dnsop-delegation-mgmt-via-ddns-02}
-\end{itemize}
+- **draft-ietf-dnsop-generalized-notify-01**
+- **draft-johani-dnsop-delegation-mgmt-via-ddns-02**
 
 ### Objective
 
@@ -19,47 +18,43 @@ it reach the point where changes in a child zone (changing \prt{NS},
 rolling keys, etc) {\bf rapidly} and {\bf automatically} get reflected
 in the parent zone. There are three mechanisms that may be explored:
 
-\begin{itemize}
-\item {\bf "NOTIFY + CDS/CSYNC":} Child sends a generalized notify to
+1. **"NOTIFY + CDS/CSYNC":** Child sends a generalized notify to
   parent notification target.  Parent scans child zone for
-  \prt{CDS}/\prt{CSYNC}, validates the result and updates parent zone
+  **CDS**/**CSYNC**, validates the result and updates parent zone
   according to policy.
 
-\item {\bf "DNS Update":} Child sends a \prt{SIG(0)} signed DNS Update
+2. **"DNS Update":** Child sends a **SIG(0)** signed DNS Update
   to parent update target. Parent does the same validation as in the
-  \prt{CDS}/\prt{CSYNC} case and updates the parent zone according to
+  **CDS**/**CSYNC** case and updates the parent zone according to
   policy.
 
-\item {\bf "Update via API":} We will simulate this by having child
+3. **"Update via API":** We will simulate this by having child
   zones with notification or update targets be a "registrar" instead
   of the parent. The "registrar" figures out what change is needed in
   the parent zone for the child delegation and then performs that
   update via an API provided by the parent (rather than EPP, as we
   don't have any EPP infrastructure).
-\end{itemize}
 
 ## EXISTING STUFF
 
-\begin{enumerate}
-\item There is a general implementation (in Go) of the proposed
-  experimental "\prt{DSYNC}" record type as a private RR type (a la
-  \prt{draft-ietf-dnsop-\\generalized-notify-01}). There is also
-  support for conversion between \prt{DSYNC} presentation format and
+1. There is a general implementation (in Go) of the proposed
+  experimental "**DSYNC**" record type as a private RR type (a la
+  **draft-ietf-dnsop-generalized-notify-01**). There is also
+  support for conversion between **DSYNC** presentation format and
   RFC3597 presentation format (for "unknown RRtypes").
 
-\item There is a simple authoritative nameserver (also written in Go)
+2. There is a simple authoritative nameserver (also written in Go)
   that supports inbound and outbound zone transfers, responding to
-  different DNS queries, receive and send \prt{NOTIFY} messages,
+  different DNS queries, receive and send **NOTIFY** messages,
   etc. The nameserver already has an API, although the API will need
   to be extended with child update capabilities.
 
-  The nameserver has support for \prt{DSYNC} via the implementation
-  above in the sense that \prt{DSYNC} records may be published in zones
+  The nameserver has support for **DSYNC** via the implementation
+  above in the sense that **DSYNC** records may be published in zones
   without an RFC3597 conversion step.
-  
-\item There is a simple "dig" replacement (guess what, it's written in
-  Go) that also has support for looking up \prt{DSYNC} records.
- \end{enumerate}
+ 
+3. There is a simple "dig" replacement (guess what, it's written in
+  Go) that also has support for looking up **DSYNC** records.
  
 Note: the existing code is just to provide something to start from. If
 someone would rather work with some other code base or in some other
@@ -88,10 +83,10 @@ parent via that mechanism.
    target.
 
 
-## Parent-side stuff}
+## Parent-side stuff
 
 The parent nameserver is already able to publish zones containing
-\prt{DSYNC} targets for children to utilize. The parent nameserver
+**DSYNC** targets for children to utilize. The parent nameserver
 should be extended be able to receive generalized notifications and
 DNS Updates. The existing parent nameserver API support should be
 extended to provide an endpoint that enables a "registrar" to make
@@ -100,12 +95,12 @@ updates on behalf of child zones.
 **Implement support in the nameserver for:**
 
 1. Receiving generalized notifications and have them trigger a
-  \prt{CDS} or \prt{CSYNC} lookup and verification.
+   **CDS** or **CSYNC** lookup and verification.
 
 2. Receiving DNS Updates (including a suitably restrictive update
      policy) and verification of the data in the received update.
 
-3. Synthezising responses to queries for "\prt{child.\_dsync.parent.}" to
+3. Synthezising responses to queries for "**child._dsync.parent.**" to
      return the \prt{DSYNC} targets for the correct registrar (if any).
      This requires some sort of mapping between child zones and
      "registrars", including information about the registrars DSYNC
@@ -141,8 +136,8 @@ instead.
      delegation information for child zones in the parent zone.
 
 3. "Translation" from an incoming (either
-     \prt{NOTIFY}+subsequent lookup and validation of a
-     \prt{CDS}/\prt{CSYNC} or a DNS Update) to an API transaction to
+     **NOTIFY** + subsequent lookup and validation of a
+     **CDS**/**CSYNC** or a DNS Update) to an API transaction to
      update the parent zone.
 
 
