@@ -1,6 +1,6 @@
 # Generalized Notifications @ Hackathon 119
 
-Implementation of rapid fully automated synchronization of DNS delegation data.
+Implementation of rapid and fully automated synchronization of DNS delegation data.
 
 ## PROJECT
 
@@ -14,8 +14,8 @@ between child and parent zones according to the two drafts
 ### Objective
 
 The intent is to add functionality to an existing nameserver to make
-it reach the point where changes in a child zone (changing \prt{NS},
-rolling keys, etc) {\bf rapidly} and {\bf automatically} get reflected
+it reach the point where changes in a child zone (changing **NS**,
+rolling keys, etc) **rapidly** and **automatically** get reflected
 in the parent zone. There are three mechanisms that may be explored:
 
 1. **"NOTIFY + CDS/CSYNC":** Child sends a generalized notify to
@@ -49,9 +49,9 @@ in the parent zone. There are three mechanisms that may be explored:
   etc. The nameserver already has an API, although the API will need
   to be extended with child update capabilities.
 
-  The nameserver has support for **DSYNC** via the implementation
-  above in the sense that **DSYNC** records may be published in zones
-  without an RFC3597 conversion step.
+    The nameserver has support for **DSYNC** via the implementation
+    above in the sense that **DSYNC** records may be published in zones
+    without an RFC3597 conversion step.
  
 3. There is a simple "dig" replacement (guess what, it's written in
   Go) that also has support for looking up **DSYNC** records.
@@ -101,7 +101,7 @@ updates on behalf of child zones.
      policy) and verification of the data in the received update.
 
 3. Synthezising responses to queries for "**child._dsync.parent.**" to
-     return the \prt{DSYNC} targets for the correct registrar (if any).
+     return the **DSYNC** targets for the correct registrar (if any).
      This requires some sort of mapping between child zones and
      "registrars", including information about the registrars DSYNC
      targets.
