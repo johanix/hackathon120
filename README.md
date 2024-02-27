@@ -74,29 +74,19 @@ affect the delegation changes. Then it needs to look up supported
 synchronization schemes in the parent zone, choose one and inform the
 parent via that mechanism.
 
-\medskip%
-\noindent%
-{\bf Implement support in the nameserver for:}
+**Implement support in the nameserver for:**
 
-\begin{enumerate}
-\item Detecting changes to delegation information (on zone reload or
-  retransfer) and a hook to potentially do something when this happens.
+1. Detecting changes to delegation information (on zone reload or
+   retransfer) and a hook to potentially do something when this happens.
 
-\item Looking up what delegation synchronization "schemes" the parent
-  zone supports.
+2. Looking up what delegation synchronization "schemes" the parent
+   zone supports.
      
-     % All of these are relevant and interesting:
-     % \begin{itemize}
-     % \item generalized NOTIFY + CDS/CSYNC lookup
-     % \item DNS Update
-     % \item API call
-     % \end{itemize}
+3. Sending generalized notifications to the correct target.
 
-\item Sending generalized notifications to the correct target.
+4. Creating, signing and sending a DNS Update to the correct
+   target.
 
-\item Creating, signing and sending a DNS Update to the correct
-  target.
-\end{enumerate}
 
 ## Parent-side stuff}
 
@@ -107,27 +97,24 @@ DNS Updates. The existing parent nameserver API support should be
 extended to provide an endpoint that enables a "registrar" to make
 updates on behalf of child zones.
 
-\medskip%
-\noindent%
-{\bf Implement support in the nameserver for:}
+**Implement support in the nameserver for:**
 
-\begin{enumerate}
-\item Receiving generalized notifications and have them trigger a
+1. Receiving generalized notifications and have them trigger a
   \prt{CDS} or \prt{CSYNC} lookup and verification.
 
-\item Receiving DNS Updates (including a suitably restrictive update
+2. Receiving DNS Updates (including a suitably restrictive update
      policy) and verification of the data in the received update.
 
-\item Synthezising responses to queries for "\prt{child.\_dsync.parent.}" to
+3. Synthezising responses to queries for "\prt{child.\_dsync.parent.}" to
      return the \prt{DSYNC} targets for the correct registrar (if any).
      This requires some sort of mapping between child zones and
      "registrars", including information about the registrars DSYNC
      targets.
 
-\item Receiving updates to delegation information via a TLS-secured API
+4. Receiving updates to delegation information via a TLS-secured API
      call. Should include some sort of mapping for which set of child
      zones a particular client is allowed to update.
-\end{enumerate}
+
 
 ## Registrar-side stuff
 
@@ -144,27 +131,23 @@ updating the parent zone it should send the data to the parent. We
 don't have EPP, so we will simulate that via the parent-side API
 instead.
 
-\medskip%
-\noindent%
-{\bf Implement support in the nameserver for:}
+**Implement support in the nameserver for:**
 
-\begin{enumerate}
-\item A "registrar" zone type. Zones managed as a registrar will not be
+1. A "registrar" zone type. Zones managed as a registrar will not be
      served, but rather only the delegation information will be
      maintained.
 
-\item The client side of the parent API to make updates to the
+2. The client side of the parent API to make updates to the
      delegation information for child zones in the parent zone.
 
-   \item "Translation" from an incoming (either
+3. "Translation" from an incoming (either
      \prt{NOTIFY}+subsequent lookup and validation of a
      \prt{CDS}/\prt{CSYNC} or a DNS Update) to an API transaction to
      update the parent zone.
-\end{enumerate}
+
 
 ### Demo stuff}
 
-\begin{enumerate}
-\item Design a nice demo to show off all the working functionality.
-\end{enumerate}
+1. Design a nice demo to show off all the working functionality.
+
 
