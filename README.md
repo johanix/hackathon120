@@ -1,6 +1,6 @@
-# Generalized Notifications @ Hackathon 119
+# Generalized DNS Notifications @ Hackathon 119
 
-Implementation of rapid and fully automated synchronization of DNS delegation data.
+Implementation of rapid and fully automated synchronization of DNS delegation data from child to parent.
 
 ## PROJECT
 
@@ -56,7 +56,7 @@ in the parent zone. There are three mechanisms that may be explored:
 3. There is a simple "dig" replacement (guess what, it's written in
   Go) that also has support for looking up **DSYNC** records.
  
-Note: the existing code is just to provide something to start from. If
+Note that the existing code is just to provide something to start from. If
 someone would rather work with some other code base or in some other
 language, then that's also great.
 
