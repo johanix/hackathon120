@@ -110,7 +110,7 @@ updates on behalf of child zones.
      call. Should include some sort of mapping for which set of child
      zones a particular client is allowed to update.
 
-
+<!---
 ## Registrar-side stuff
 
 The intended model for a registrar is that if the generalized
@@ -139,7 +139,7 @@ instead.
      **NOTIFY** + subsequent lookup and validation of a
      **CDS**/**CSYNC** or a DNS Update) to an API transaction to
      update the parent zone.
-
+--->
 
 ### Demo stuff
 
