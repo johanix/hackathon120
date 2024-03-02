@@ -1,4 +1,4 @@
-# Fully Automated Synchronization of DNS Delegation Data From Child to Parent
+# Rapid Automated Synchronization of DNS Delegation Data From Child to Parent
 
 
 ## PROJECT
@@ -6,6 +6,9 @@
 Add new functionality to a working nameserver implementation to
 enable fully automatic synchronization of delegation information
 from child zone to parent zone.
+
+The goal is to make synchronization both rapid and fully automated for
+both DNSSEC signed and unsigned child zones.
 
 The specification for what should be built is based on the two drafts
 
