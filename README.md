@@ -1,15 +1,20 @@
-# Generalized DNS Notifications @ Hackathon 119
+# Fully Automated Synchronization of DNS Delegation Data From Child to Parent
 
-Implementation of rapid and fully automated synchronization of DNS delegation data from child to parent.
 
 ## PROJECT
 
 Add new functionality to a working nameserver implementation to
-provide fully automatic management of delegation information
-between child and parent zones according to the two drafts
+enable fully automatic synchronization of delegation information
+from child zone to parent zone.
+
+The specification for what should be built is based on the two drafts
 
 - **draft-ietf-dnsop-generalized-notify-01**
 - **draft-johani-dnsop-delegation-mgmt-via-ddns-02**
+
+**Note:** There are quite a lot of separate tasks listed below. There
+should be something for everyone interested. Some tasks are quite
+small while others require a bit more work.
 
 ### Objective
 
