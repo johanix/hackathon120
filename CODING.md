@@ -1,4 +1,4 @@
-# Generalized DNS Notifications @ Hackathon 119
+# Rapid Automated Synchronization of DNS Delegation Data From Child to Parent
 
 Implementation of rapid and fully automated synchronization of DNS delegation data from child to parent.
 
