@@ -3,14 +3,14 @@
 
 ## PROJECT
 
-Add new functionality to a working nameserver implementation to
+Add new functionality to a simple but working nameserver implementation to
 enable fully automatic synchronization of delegation information
 from child zone to parent zone.
 
 The goal is to make synchronization both rapid and fully automated for
 both DNSSEC signed and unsigned child zones.
 
-The specification for what should be built is based on the two drafts
+The specification for what should be built is based on the two drafts:
 
 - **draft-ietf-dnsop-generalized-notify-01**
 - **draft-johani-dnsop-delegation-mgmt-via-ddns-02**
@@ -26,32 +26,32 @@ it reach the point where changes in a child zone (changing **NS**,
 rolling keys, etc) **rapidly** and **automatically** get reflected
 in the parent zone. There are three mechanisms that may be explored:
 
-1. **"NOTIFY + CDS/CSYNC":** Child sends a generalized notify to
-  parent notification target.  Parent scans child zone for
-  **CDS**/**CSYNC**, validates the result and updates parent zone
-  according to policy.
+1. **"NOTIFY + CDS/CSYNC lookup":** Child sends a generalized notify
+  (NOTIFY(CDS) or NOTIFY(CSYNC) to parent notification target. Parent
+  looks up **CDS** or **CSYNC** record in child zone, validates the
+  result and updates parent zone according to policy.
 
 2. **"DNS Update":** Child sends a **SIG(0)** signed DNS Update
   to parent update target. Parent does the same validation as in the
   **CDS**/**CSYNC** case and updates the parent zone according to
   policy.
 
-3. **"Update via API":** We will simulate this by having child
-  zones with notification or update targets be a "registrar" instead
-  of the parent. The "registrar" figures out what change is needed in
-  the parent zone for the child delegation and then performs that
-  update via an API provided by the parent (rather than EPP, as we
-  don't have any EPP infrastructure).
+3. **"Update via API":** If there is time for this alternative, then it
+  will be simulated by having child zones with notification or update
+  targets be a "registrar" instead of the parent. The "registrar" figures
+  out what change is needed in the parent zone for the child delegation
+  and then performs that update via an API provided by the parent (rather
+  than EPP, as we don't have any EPP infrastructure).
 
 ## EXISTING STUFF
 
-1. There is a general implementation (in Go) of the proposed
+1. There is a general implementation (written in Go) of the proposed
   experimental "**DSYNC**" record type as a private RR type (a la
   **draft-ietf-dnsop-generalized-notify-01**). There is also
   support for conversion between **DSYNC** presentation format and
-  RFC3597 presentation format (for "unknown RRtypes").
+  RFC3597 presentation format (for "unknown RRtypes"), if needed.
 
-2. There is a simple authoritative nameserver (also written in Go)
+2. There is a simple authoritative nameserver (written in Go)
   that supports inbound and outbound zone transfers, responding to
   different DNS queries, receive and send **NOTIFY** messages,
   etc. The nameserver already has an API, although the API will need
@@ -61,8 +61,10 @@ in the parent zone. There are three mechanisms that may be explored:
     above in the sense that **DSYNC** records may be published in zones
     without an RFC3597 conversion step.
  
-3. There is a simple "dig" replacement (guess what, it's written in
-  Go) that also has support for looking up **DSYNC** records.
+3. There is a simple "dig" replacement (also written in Go) that has
+   support for looking up and presenting **DSYNC** records, either in
+   response to specific queries for **DSYNC** records, or as part of a
+   zone transfer.
  
 Note that the existing code is just to provide something to start from. If
 someone would rather work with some other code base or in some other
@@ -105,18 +107,19 @@ updates on behalf of child zones.
 1. Receiving generalized notifications and have them trigger a
    **CDS** or **CSYNC** lookup and verification.
 
-2. Receiving DNS Updates (including a suitably restrictive update
-     policy) and verification of the data in the received update.
+2. Receiving DNS Updates (including implementation of a suitably
+   restrictive update policy) and verification of the data in the
+   received update.
 
 3. Synthezising responses to queries for "**child._dsync.parent.**" to
-     return the **DSYNC** targets for the correct registrar (if any).
-     This requires some sort of mapping between child zones and
-     "registrars", including information about the registrars DSYNC
-     targets.
+   return the **DSYNC** targets for the correct registrar (if any).
+   This requires some sort of mapping between child zones and
+   "registrars", including information about the registrars DSYNC
+   targets.
 
 4. Receiving updates to delegation information via a TLS-secured API
-     call. Should include some sort of mapping for which set of child
-     zones a particular client is allowed to update.
+   call. Should include some sort of mapping for which set of child
+   zones a particular client is allowed to update.
 
 <!---
 ## Registrar-side stuff
