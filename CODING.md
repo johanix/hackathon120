@@ -30,7 +30,9 @@ you go with v1.21, but a slightly older one will likely also work find.
    replace github.com/miekg/dns => where/you/put/dns
 ```
 
-   so that all references to the normal DNS library are replaced by our local version.
+   so that all references to the normal DNS library are replaced by our local version. 
+   Note: if you just put the "dns" repo next to the "tdns" repo you will be all set,
+   no changes needed.
 
 4. Try to build everything:
 
