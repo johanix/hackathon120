@@ -37,4 +37,9 @@ you go with v1.21, but a slightly older one will likely also work find.
 ```
 (cd tdns ; make)
 ```
-
+   If there are complaints it is most likely something a la "re-run go mod tidy". In
+   that case, do that. Eg.:
+```go
+(cd tdns/tdnsd ; go mod tidy)
+```
+   or similar, depending on which tool failed to build.
