@@ -20,19 +20,17 @@ you go with v1.21, but a slightly older one will likely also work find.
    This contains a slightly modified version of the normal Go DNS library written by
    Miek Gieben. The changes are just to make the library accept NOTIFY messages with
    other RRtypes than SOA and to slightly relax the restrictions on the number of 
-   records in the different sections of the packet for the library to accept it as a
-   valid DNS message.
+   records in the different sections of DNS updates messages accepted by the library.
 
-3. Examine the "replace" directive in the go.mod file for the different tools in the
-   tdns repo. It is necessary that it says:
+3. If you just put the "dns" repo next to the "tdns" repo, you don't need this step.
+   If you put it in a different directly, you need to add a `replace` directive in
+   the `go.mod` file for each of the different tools in the tdns repo:
 
-```
-   replace github.com/miekg/dns => where/you/put/dns
-```
+   ```
+      replace github.com/miekg/dns => where/you/put/dns
+   ```
 
    so that all references to the normal DNS library are replaced by our local version. 
-   Note: if you just put the "dns" repo next to the "tdns" repo you will be all set,
-   no changes needed.
 
 4. Try to build everything:
 
