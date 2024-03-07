@@ -22,8 +22,8 @@ you go with v1.21, but a slightly older one will likely also work find.
    other RRtypes than SOA and to slightly relax the restrictions on the number of 
    records in the different sections of DNS updates messages accepted by the library.
 
-3. If you just put the "dns" repo next to the "tdns" repo, you don't need this step.
-   If you put it in a different directly, you need to add a `replace` directive in
+3. (**Note:** If you just put the "dns" repo next to the "tdns" repo, you don't need this
+   step.) If you put it in a different directly, you need to add a `replace` directive in
    the `go.mod` file for each of the different tools in the tdns repo:
 
    ```
@@ -32,14 +32,16 @@ you go with v1.21, but a slightly older one will likely also work find.
 
    so that all references to the normal DNS library are replaced by our local version. 
 
-4. Try to build everything:
+5. Try to build everything:
 
-```
-(cd tdns ; make)
-```
-   If there are complaints it is most likely something a la "re-run go mod tidy". In
-   that case, do that. Eg.:
-```go
-(cd tdns/tdnsd ; go mod tidy)
-```
-   or similar, depending on which tool failed to build.
+   ```
+   (cd tdns ; make)
+   ```
+
+      If there are complaints it is most likely something a la "re-run go mod tidy". In
+      that case, do that. Eg.:
+   ```go
+   (cd tdns/tdnsd ; go mod tidy)
+   ```
+
+      or similar, depending on which tool failed to build.
