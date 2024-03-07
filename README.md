@@ -51,7 +51,7 @@ in the parent zone. There are three mechanisms that may be explored:
   support for conversion between **DSYNC** presentation format and
   RFC3597 presentation format (for "unknown RRtypes"), if needed.
 
-2. There is a simple authoritative nameserver (written in Go)
+2. There is a simple authoritative nameserver called `tdnsd` (written in Go)
   that supports inbound and outbound zone transfers, responding to
   different DNS queries, receive and send **NOTIFY** messages,
   etc. The nameserver already has an API, although the API will need
@@ -65,6 +65,10 @@ in the parent zone. There are three mechanisms that may be explored:
    support for looking up and presenting **DSYNC** records, either in
    response to specific queries for **DSYNC** records, or as part of a
    zone transfer.
+
+The code for the nameserver and CLI tools is in the Github repo is in the Github repo [https://github.com/johanix/tdns.git](https://github.com/johanix/tdns.git). Please
+take a look att the file CODING.md here in this repo, as it explains how to set
+things up to be able to build things.
  
 Note that the existing code is just to provide something to start from. If
 someone would rather work with some other code base or in some other
