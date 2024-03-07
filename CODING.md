@@ -23,8 +23,10 @@ you go with v1.21, but a slightly older one will likely also work find.
    records in the different sections of DNS updates messages accepted by the library.
 
 3. (**Note:** If you just put the "dns" repo next to the "tdns" repo, you don't need this
-   step.) If you put it in a different directly, you need to add a `replace` directive in
-   the `go.mod` file for each of the different tools in the tdns repo:
+   step.)
+
+      If you put it in a different directly, you need to add a `replace` directive in
+      the `go.mod` file for each of the different tools in the tdns repo:
 
    ```
       replace github.com/miekg/dns => where/you/put/dns
