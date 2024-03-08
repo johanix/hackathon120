@@ -76,7 +76,7 @@ language, then that's also great.
 
 ## TASKS
 
-### Child-side stuff
+### Child-side functionality:
 
 The child primary must notice when contents in the child zone that
 affect the delegation changes. Then it needs to look up supported
@@ -97,7 +97,7 @@ parent via that mechanism.
    target.
 
 
-## Parent-side stuff
+## Parent-side functionality:
 
 The parent nameserver is already able to publish zones containing
 **DSYNC** targets for children to utilize. The parent nameserver
@@ -115,13 +115,17 @@ updates on behalf of child zones.
    restrictive update policy) and verification of the data in the
    received update.
 
-3. Synthezising responses to queries for "**child._dsync.parent.**" to
+3. A datastore for child public keys (used for validation of DNS Updates).
+
+4. A datastore for updated child delegation information.
+
+5. Synthezising responses to queries for "**child._dsync.parent.**" to
    return the **DSYNC** targets for the correct registrar (if any).
    This requires some sort of mapping between child zones and
    "registrars", including information about the registrars DSYNC
    targets.
 
-4. Receiving updates to delegation information via a TLS-secured API
+6. Receiving updates to delegation information via a TLS-secured API
    call. Should include some sort of mapping for which set of child
    zones a particular client is allowed to update.
 
