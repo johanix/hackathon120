@@ -1,6 +1,12 @@
 version: '3.8'
 
 services:
+  signer:
+    build: signer
+    init: true
+    volumes:
+    - ./conf/zones:/zones:ro
+
   ns:
     build: https://github.com/johanix/tdns.git#ac635fbc679430260bae3ba02ac7c96b291d9a70
     init: true
