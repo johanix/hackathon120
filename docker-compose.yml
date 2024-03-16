@@ -15,8 +15,8 @@ services:
       middle:
         ipv4_address: 10.16.1.4
     ports:
-    - "127.0.0.1:5553:53/tcp"
-    - "127.0.0.1:5553:53/udp"
+    - "${EXTDNSPORT:-53}:53/tcp"
+    - "${EXTDNSPORT:-53}:53/udp"
     volumes:
     - ./ns/${NSCONFDIR}:/etc/bind
 
