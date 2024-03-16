@@ -8,7 +8,7 @@ services:
     - "1053:53/tcp"
     - "1053:53/udp"
     volumes:
-    - ./conf:/etc/axfr.net
+    - ./ns/conf:/etc/axfr.net:ro
     - tdns:/storage
     restart: unless-stopped
 
