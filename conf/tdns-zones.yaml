@@ -1,0 +1,13 @@
+zones:
+   parent.axfr.net:
+      name:		parent.axfr.net
+      type:		primary
+      zonefile:		/etc/axfr.net/zones/parent.axfr.net.zone
+      store:		map
+      notify:		[ 127.0.0.1:5399 ]
+   test.net:
+      name:		test.net
+      type:		primary
+      zonefile:		/etc/axfr.net/zones/test.net.zone
+      store:		map
+      notify:		[ 127.0.0.1:5399 ]
