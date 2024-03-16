@@ -1,0 +1,16 @@
+; This is the state of key 28292, for schild.parent.axfr.net.
+Algorithm: 13
+Length: 256
+Lifetime: 2678400
+KSK: no
+ZSK: yes
+Generated: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Published: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Active: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Retired: 20240416092033 (Tue Apr 16 09:20:33 2024)
+Removed: 20240426102533 (Fri Apr 26 10:25:33 2024)
+DNSKEYChange: 20240316092033 (Sat Mar 16 09:20:33 2024)
+ZRRSIGChange: 20240316092033 (Sat Mar 16 09:20:33 2024)
+DNSKEYState: rumoured
+ZRRSIGState: rumoured
+GoalState: omnipresent

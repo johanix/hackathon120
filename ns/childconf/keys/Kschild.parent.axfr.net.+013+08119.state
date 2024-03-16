@@ -1,0 +1,19 @@
+; This is the state of key 8119, for schild.parent.axfr.net.
+Algorithm: 13
+Length: 256
+Lifetime: 94608000
+KSK: yes
+ZSK: no
+Generated: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Published: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Active: 20240316092033 (Sat Mar 16 09:20:33 2024)
+Retired: 20270316092033 (Tue Mar 16 09:20:33 2027)
+Removed: 20270317112033 (Wed Mar 17 11:20:33 2027)
+PublishCDS: 20240317102533 (Sun Mar 17 10:25:33 2024)
+DNSKEYChange: 20240316092033 (Sat Mar 16 09:20:33 2024)
+KRRSIGChange: 20240316092033 (Sat Mar 16 09:20:33 2024)
+DSChange: 20240316092033 (Sat Mar 16 09:20:33 2024)
+DNSKEYState: rumoured
+KRRSIGState: rumoured
+DSState: hidden
+GoalState: omnipresent

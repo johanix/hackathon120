@@ -1,5 +1,12 @@
 version: '3.8'
 
+# NSCONFDIR must be set in the .env file
+# For "parent"
+#   NSCONFDIR=conf
+# For "schild"
+#   NSCONFDIR=schildconf
+# For "uchild"
+#   NSCONFDIR=uchildconf
 services:
   ns:
     build: ns
@@ -7,8 +14,11 @@ services:
     networks:
       middle:
         ipv4_address: 10.16.1.4
+    ports:
+    - "127.0.0.1:5553:53/tcp"
+    - "127.0.0.1:5553:53/udp"
     volumes:
-    - ./ns/conf:/etc/bind
+    - ./ns/${NSCONFDIR}:/etc/bind
 
   tdns:
     build: https://github.com/johanix/tdns.git#ac635fbc679430260bae3ba02ac7c96b291d9a70
@@ -31,9 +41,6 @@ services:
     image: cznic/knot-resolver:v5.7.1
     init: true
     command: ["-c", "/etc/knot-resolver/kresd.conf", "-n"]
-    ports:
-    - "53/tcp"
-    - "53/udp"
     networks:
       middle:
         ipv4_address: 10.16.1.2
