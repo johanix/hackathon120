@@ -4,6 +4,9 @@ services:
   ns:
     build: ns
     init: true
+    networks:
+      middle:
+        ipv4_address: 10.16.1.4
     volumes:
     - ./ns/conf:/etc/bind
 
