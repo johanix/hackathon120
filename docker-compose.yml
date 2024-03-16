@@ -1,10 +1,17 @@
 version: '3.8'
 
 services:
+  ns:
+    build: ns
+    init: true
+    volumes:
+    - ./ns/conf:/etc/bind
+
   tdns:
     build: https://github.com/johanix/tdns.git#ac635fbc679430260bae3ba02ac7c96b291d9a70
     init: true
     depends_on:
+    - ns
     - resolver
     ports:
     - "1053:53/tcp"
