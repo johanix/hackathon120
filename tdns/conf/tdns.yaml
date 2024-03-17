@@ -30,6 +30,15 @@ validator:
 #      trusted:
 #         file:		/etc/axfr.net/sig0-keys.yaml
 
+ddns:
+   update-ns:           true
+   update-a:            false
+   update-aaaa:         false
+   policy:
+      type:             selfsub
+      rrtypes:          [ A, AAAA, NS, KEY ]
+      keyupload:        unvalidated
+
 scanner:
    interval:    	60
 

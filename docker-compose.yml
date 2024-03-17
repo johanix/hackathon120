@@ -21,7 +21,7 @@ services:
     - ./ns/${NSCONFDIR}:/etc/bind
 
   tdns:
-    build: https://github.com/johanix/tdns.git#ac635fbc679430260bae3ba02ac7c96b291d9a70
+    build: https://github.com/johanix/tdns.git#776b2b67229cd7fb4deb2dc58fe19e1eb5666ba5
     init: true
     depends_on:
     - ns
