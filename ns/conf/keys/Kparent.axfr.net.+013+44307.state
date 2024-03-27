@@ -12,8 +12,8 @@ Removed: 20270317052542 (Wed Mar 17 05:25:42 2027)
 PublishCDS: 20240317043042 (Sun Mar 17 04:30:42 2024)
 DNSKEYChange: 20240316072917 (Sat Mar 16 07:29:17 2024)
 KRRSIGChange: 20240316072917 (Sat Mar 16 07:29:17 2024)
-DSChange: 20240316072917 (Sat Mar 16 07:29:17 2024)
+DSChange: 20240317083417 (Sun Mar 17 08:34:17 2024)
 DNSKEYState: omnipresent
 KRRSIGState: omnipresent
-DSState: hidden
+DSState: rumoured
 GoalState: omnipresent
