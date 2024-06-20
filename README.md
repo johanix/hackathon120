@@ -12,7 +12,7 @@ both DNSSEC signed and unsigned child zones.
 
 The specification for what should be built is based on the two drafts:
 
-- **draft-ietf-dnsop-generalized-notify-01**
+- **draft-ietf-dnsop-generalized-notify-02**
 - **draft-johani-dnsop-delegation-mgmt-via-ddns-02**
 
 **Note:** There are quite a lot of separate tasks listed below. There
