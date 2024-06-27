@@ -54,14 +54,17 @@ in the parent zone. There are three mechanisms that may be explored:
 2. There is a simple authoritative nameserver called `tdnsd` (written in Go)
   that supports inbound and outbound zone transfers, responding to
   different DNS queries, receive and send **NOTIFY** messages,
-  etc. The nameserver already has an API, although the API will need
-  to be extended with child update capabilities.
+  etc.
 
-    The nameserver has support for **DSYNC** via the implementation
+    - The nameserver already has an API, although the API will need
+    to be extended with child update capabilities. It also has preliminary
+    support for online signing, as well as sending and receiving DNS Updates.
+
+    - The nameserver has support for **DSYNC** via the implementation
     above in the sense that **DSYNC** records may be published in zones
     without an RFC3597 conversion step.
  
-3. There is a simple "dig" replacement (also written in Go) that has
+4. There is a simple "dig" replacement (also written in Go) that has
    support for looking up and presenting **DSYNC** records, either in
    response to specific queries for **DSYNC** records, or as part of a
    zone transfer.
