@@ -85,19 +85,19 @@ parent via that mechanism.
 
 **Implement support in the nameserver for:**
 
-1. [DONE] Detecting changes to delegation information (on zone reload or
+1. **[DONE]** Detecting changes to delegation information (on zone reload or
    retransfer) and a hook to potentially do something when this happens.
 
-2. [DONE] Looking up what delegation synchronization "schemes" the parent
+2. **[DONE]** Looking up what delegation synchronization "schemes" the parent
    zone supports.
      
 3. Publish an appropriate CSYNC record in the zone.
    
 4. Sending generalized notifications to the correct target.
 
-5. [DONE] A datastore for child private SIG(0) keys to be used to sign DNS Updates.
+5. **[DONE]** A datastore for child private SIG(0) keys to be used to sign DNS Updates.
 
-6. [DONE] Creating, signing and sending a DNS Update to the correct
+6. **[DONE]** Creating, signing and sending a DNS Update to the correct
    target.
 
 
@@ -115,13 +115,13 @@ updates on behalf of child zones.
 1. Receiving generalized notifications and have them trigger a
    **CDS** or **CSYNC** lookup and verification.
 
-2. [DONE] Receiving DNS Updates (including implementation of a suitably
+2. **[DONE]** Receiving DNS Updates (including implementation of a suitably
    restrictive update policy) and verification of the data in the
    received update.
 
-3. [DONE] A datastore for child public keys (used for validation of DNS Updates).
+3. **[DONE]** A datastore for child public keys (used for validation of DNS Updates).
 
-4. [DONE] A datastore for updated child delegation information.
+4. **[DONE]** A datastore for updated child delegation information.
 
 5. Synthezising responses to queries for "**child._dsync.parent.**" to
    return the **DSYNC** targets for the correct registrar (if any).
