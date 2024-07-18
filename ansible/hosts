@@ -1,0 +1,12 @@
+[all:children]
+gck
+
+[gck:vars]
+ansible_port=22
+ansible_python_interpreter=/usr/bin/python3
+
+[gck]
+hthon-1.dnslab.net
+hthon-2.dnslab.net
+hthon-3.dnslab.net
+hthon-4.dnslab.net

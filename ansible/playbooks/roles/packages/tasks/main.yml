@@ -1,0 +1,24 @@
+---
+- name: Install basic packages
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 14400
+    autoremove: yes
+    pkg:
+      - tcsh
+      - csh
+      - rsync
+      - make
+      - mg
+      - emacs
+      - golang
+      - bind9
+      - bind9-dev
+      - bind9-dnsutils
+      - bind9-doc
+      - bind9-host
+      - bind9-libs
+      - bind9-utils
+      - git
+      - git-doc
+  tags: packages

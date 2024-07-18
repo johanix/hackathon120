@@ -1,0 +1,4 @@
+---
+- hosts: gck
+  roles:
+    - { role: packages, tags: packages }
