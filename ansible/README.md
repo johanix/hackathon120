@@ -1,4 +1,4 @@
-[//]: # (Time-stamp: <2024-07-18 07:18:13 UTC liman>)
+[//]: # (Time-stamp: <2024-07-18 07:25:32 UTC liman>)
 
 # Ansible Configuration For Lab Servers
 
@@ -9,12 +9,6 @@ work, but they provide support for some of the more tedious
 tasks.
 
 To run a full playbook on all hosts, do
-
-```
-ansible-playbook -b -i hosts playbooks/hackathon.yml
-```
-
-To run only a certain role, do 
 
 ```
 ansible-playbook -b -i hosts playbooks/hackathon.yml
