@@ -98,9 +98,11 @@ parent via that mechanism.
    
 4. Sending generalized notifications to the correct target.
 
-5. **[DONE]** A datastore for child private SIG(0) keys to be used to sign DNS Updates.
+5. Publish an appropriate (i.e. a key for which TDNSD has the private key) KEY record in the zone.
 
-6. **[DONE]** Creating, signing and sending a DNS Update to the correct
+6. **[DONE]** A keystore for child private SIG(0) keys to be used to sign DNS Updates.
+
+7. **[DONE]** Creating, signing and sending a DNS Update to the correct
    target.
 
 
@@ -135,6 +137,26 @@ updates on behalf of child zones.
 6. Receiving updates to delegation information via a TLS-secured API
    call. Should include some sort of mapping for which set of child
    zones a particular client is allowed to update.
+
+7. DNSSEC-validation of signed data in a child zone. I.e. for the parent
+   to be able to trust CDS/CSYNC/NS/glue RRsets in the child it must be able
+   to verify their authenticity.
+
+## General functionality:
+
+**Implement or improve the support for:**
+
+1. Signing and re-signing RRsets that are modified.
+
+2. Providing authenticated negative responses via
+   so-called "DNSSEC black lies".
+
+3. Freeze/thaw logic to enable modifications to primary zones 
+   to optionally be written back to the zone file.
+
+4. Complete zone signing, including publication of the DNSKEY RRset,
+   correctly sign different RRsets with either ZSKs or KSKs, as
+   appropriate.
 
 <!---
 ## Registrar-side stuff
