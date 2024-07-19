@@ -77,6 +77,11 @@ in the parent zone. There are three mechanisms that may be explored:
    SIG(0) keys in the `tdnsd truststore`. It is also possible to manage
    whether a particular SIG(0) key is *trusted* (as opposed to *known*
    or *validated*).
+
+   - `tdns-cli` is able to create, sign and send DNS UPDATE messages
+   (typically to `tdnsd`, but not necessarily). In particular, it is
+   able to send UPDATEs containing new record types like DSYNC and DELEG,
+   that are not supported by the well-known tool `nsupdate`.
  
 4. There is a simple "dig" replacement (also written in Go) that has
    support for looking up and presenting **DSYNC** records, either in
