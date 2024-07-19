@@ -51,7 +51,7 @@ in the parent zone. There are three mechanisms that may be explored:
   support for conversion between **DSYNC** presentation format and
   RFC3597 presentation format (for "unknown RRtypes"), if needed.
 
-2. There is a simple authoritative nameserver called `tdnsd` (written in Go)
+2. There is a simple authoritative nameserver called **tdnsd** (written in Go)
   that supports inbound and outbound zone transfers, responding to
   different DNS queries, receive and send **NOTIFY** messages,
   etc.
@@ -68,7 +68,7 @@ in the parent zone. There are three mechanisms that may be explored:
     updating authoritative zone data and (in a parent role) updating 
     child delegation data.
 
-3. There is a CLI management tool for `tdnsd` called `tdns-cli`.
+3. There is a CLI management tool for `tdnsd` called **tdns-cli**.
 
    - `tdns-cli` has a range of different commands to add/delete/list 
   both SIG(0) and DNSSEC private keys in the `tdnsd keystore`.
@@ -81,17 +81,19 @@ in the parent zone. There are three mechanisms that may be explored:
    - `tdns-cli` is able to create, sign and send DNS UPDATE messages
    (typically to `tdnsd`, but not necessarily). In particular, it is
    able to send UPDATEs containing new record types like **DSYNC** and
-   **DELEG**, that are not supported by the well-known tool `nsupdate`.
+   **DELEG**, that are not supported by the well-known tool **nsupdate**.
  
-4. There is a simple "**dig**" replacement called **dog** (also written 
-   in Go) that has
+4. There is a simple replacement for the well-known "**dig**" tool,
+   called **dog** (also written in Go). **dog** that has
    support for looking up and presenting **DSYNC** records, either in
    response to specific queries for **DSYNC** records, or as part of a
    zone transfer. **dog** also supports **DELEG** records.
 
-The code for the nameserver and CLI tools is in the Github repo is in the Github repo [https://github.com/johanix/tdns.git](https://github.com/johanix/tdns.git). Please
-take a look att the file CODING.md here in this repo, as it explains how to set
-things up to be able to build things.
+The code for the nameserver and CLI tools is in the Github repo is in 
+the Github repo
+[https://github.com/johanix/tdns.git](https://github.com/johanix/tdns.git).
+Please take a look att the file CODING.md here in this repo, as it explains
+how to set things up to be able to build things.
  
 Note that the existing code is just to provide something to start from. If
 someone would rather work with some other code base or in some other
