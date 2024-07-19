@@ -47,7 +47,7 @@ in the parent zone. There are three mechanisms that may be explored:
 
 1. There is a general implementation (written in Go) of the proposed
   experimental "**DSYNC**" record type as a private RR type (a la
-  **draft-ietf-dnsop-generalized-notify-01**). There is also
+  **draft-ietf-dnsop-generalized-notify-02**). There is also
   support for conversion between **DSYNC** presentation format and
   RFC3597 presentation format (for "unknown RRtypes"), if needed.
 
@@ -56,13 +56,27 @@ in the parent zone. There are three mechanisms that may be explored:
   different DNS queries, receive and send **NOTIFY** messages,
   etc.
 
-    - The nameserver already has an API, although the API will need
+    - `tdnsd` has an API, although the API will need
     to be extended with child update capabilities. It also has preliminary
     support for online signing, as well as sending and receiving DNS Updates.
 
-    - The nameserver has support for **DSYNC** via the implementation
+    - `tdnsd` has support for **DSYNC** via the implementation
     above in the sense that **DSYNC** records may be published in zones
     without an RFC3597 conversion step.
+
+    - `tdnsd` supports inbound DNS UPDATEs, both for (in a child role)
+    updating authoritative zone data and (in a parent role) updating 
+    child delegation data.
+
+3. There is a CLI management tool for `tdnsd` called `tdns-cli`.
+
+   - `tdns-cli` has a range of different commands to add/delete/list 
+  both SIG(0) and DNSSEC private keys in the `tdnsd keystore`.
+
+   - `tdns-cli` has a range of commands to add/delete/list SIG(0) public
+   SIG(0) keys in the `tdnsd truststore`. It is also possible to manage
+   whether a particular SIG(0) key is *trusted* (as opposed to *known*
+   or *validated*).
  
 4. There is a simple "dig" replacement (also written in Go) that has
    support for looking up and presenting **DSYNC** records, either in
