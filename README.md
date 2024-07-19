@@ -80,13 +80,14 @@ in the parent zone. There are three mechanisms that may be explored:
 
    - `tdns-cli` is able to create, sign and send DNS UPDATE messages
    (typically to `tdnsd`, but not necessarily). In particular, it is
-   able to send UPDATEs containing new record types like DSYNC and DELEG,
-   that are not supported by the well-known tool `nsupdate`.
+   able to send UPDATEs containing new record types like **DSYNC** and
+   **DELEG**, that are not supported by the well-known tool `nsupdate`.
  
-4. There is a simple "dig" replacement (also written in Go) that has
+4. There is a simple "**dig**" replacement called **dog** (also written 
+   in Go) that has
    support for looking up and presenting **DSYNC** records, either in
    response to specific queries for **DSYNC** records, or as part of a
-   zone transfer.
+   zone transfer. **dog** also supports **DELEG** records.
 
 The code for the nameserver and CLI tools is in the Github repo is in the Github repo [https://github.com/johanix/tdns.git](https://github.com/johanix/tdns.git). Please
 take a look att the file CODING.md here in this repo, as it explains how to set
