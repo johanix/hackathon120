@@ -51,20 +51,20 @@ in the parent zone. There are three mechanisms that may be explored:
   support for conversion between **DSYNC** presentation format and
   RFC3597 presentation format (for "unknown RRtypes"), if needed.
 
-2. There is a simple authoritative nameserver called **tdnsd** (written in Go)
+2. There is a simple authoritative nameserver called **tdns-server** (written in Go)
   that supports inbound and outbound zone transfers, responding to
   different DNS queries, receive and send **NOTIFY** messages,
   etc.
 
-    - `tdnsd` has an API, although the API will need
+    - `tdns-server` has an API, although the API will need
     to be extended with child update capabilities. It also has preliminary
     support for online signing, as well as sending and receiving DNS Updates.
 
-    - `tdnsd` has support for **DSYNC** via the implementation
+    - `tdns-server` has support for **DSYNC** via the implementation
     above in the sense that **DSYNC** records may be published in zones
     without an RFC3597 conversion step.
 
-    - `tdnsd` supports inbound DNS UPDATEs, both for (in a child role)
+    - `tdns-server` supports inbound DNS UPDATEs, both for (in a child role)
     updating authoritative zone data and (in a parent role) updating 
     child delegation data.
 
@@ -116,13 +116,15 @@ parent via that mechanism.
 2. **[DONE]** Looking up what delegation synchronization "schemes" the parent
    zone supports.
      
-3. Publish an appropriate CSYNC record in the zone.
+3. **[DONE]** Publish an appropriate CSYNC record in the zone.
    
-4. Sending generalized notifications to the correct target.
+4. **[DONE]** Sending generalized notifications to the correct target.
 
-5. Publish an appropriate (i.e. a key for which TDNSD has the private key) KEY record in the zone.
+5. **[DONE]** Publish an appropriate (i.e. a key for which TDNSD has
+the private key) KEY record in the zone.
 
-6. **[DONE]** A keystore for child private SIG(0) keys to be used to sign DNS Updates.
+6. **[DONE]** A keystore for child private SIG(0) keys to be used to
+sign DNS Updates.
 
 7. **[DONE]** Creating, signing and sending a DNS Update to the correct
    target.
@@ -139,7 +141,7 @@ updates on behalf of child zones.
 
 **Implement support in the nameserver for:**
 
-1. Receiving generalized notifications and have them trigger a
+1. **[ALMOST DONE]** Receiving generalized notifications and have them trigger a
    **CDS** or **CSYNC** lookup and verification.
 
 2. **[DONE]** Receiving DNS Updates (including implementation of a suitably
@@ -168,17 +170,17 @@ updates on behalf of child zones.
 
 **Implement or improve the support for:**
 
-1. Signing and re-signing RRsets that are modified.
+1. **[DONE]** Signing and re-signing RRsets that are modified.
 
 2. Providing authenticated negative responses via
    so-called "DNSSEC black lies".
 
-3. Freeze/thaw logic to enable modifications to primary zones 
+3. **[DONE]** Freeze/thaw logic to enable modifications to primary zones 
    to optionally be written back to the zone file.
 
-4. Complete zone signing, including publication of the DNSKEY RRset,
-   correctly sign different RRsets with either ZSKs or KSKs, as
-   appropriate.
+4. **[DONE]** Complete zone signing, including publication of the
+DNSKEY RRset, correctly sign different RRsets with either ZSKs or
+KSKs, as appropriate.
 
 <!---
 ## Registrar-side stuff
